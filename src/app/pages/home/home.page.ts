@@ -1,0 +1,24 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
+})
+export class HomePage implements OnInit {
+
+  constructor() { }
+  segment='chats';
+  
+  ngOnInit() {
+  }
+  /**
+   * logout
+   */
+  public logout() {
+    
+  }
+  public onSegmentChanged(event: any) {
+    
+  }
+}

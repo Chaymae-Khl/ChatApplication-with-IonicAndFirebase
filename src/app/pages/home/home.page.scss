@@ -1,0 +1,22 @@
+ion-header{
+     ion-toolbar{
+        font-family:inherit, cursive !important;
+        ion-title{
+            letter-spacing: 2px;
+            font-size: 1.8rem !important;
+        }
+
+     }
+     ion-segment{
+        --background:var(--ion-color-primary);
+        ion-segment-button{
+            font-size:1rem;
+            --color-checked:#fff;
+        }
+     }
+
+
+
+
+
+}
