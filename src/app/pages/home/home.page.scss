@@ -1,4 +1,4 @@
-ion-header{
+ion-header.title-header{
      ion-toolbar{
         font-family:inherit, cursive !important;
         ion-title{
@@ -15,8 +15,27 @@ ion-header{
         }
      }
 
+}
+ion-content{
+    
+ion-list{
+ion-list-header{
+padding-bottom: 26px;
+    font-weight: 600rem;
+    font-size: 1rem;
+}
+ion-item{
+    ion-label{
+        font-size:1.2rem;
+        p{
+            margin-top: 3px;
+        }
+    }
+    ion-text{
+        font-size: 0.9rem;
+    }
+}
 
-
-
+}
 
 }
