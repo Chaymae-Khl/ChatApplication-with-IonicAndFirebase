@@ -1,13 +1,33 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar color="primary">
-    <ion-title>chat</ion-title>
-  </ion-toolbar>
+  <ion-buttons slot="start">
+   <ion-back-button defaultHref="/home"></ion-back-button>
+  </ion-buttons>
+<ion-title>{{name}}</ion-title>
+</ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">chat</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content >
+<ion-list color="primary" lines="none" *ngIf="(chats) as chat$">
+  <ion-item-group  class="chats-group" *ngFor="let chat of chat$" style="color: rgb(131, 128, 128);">
+    <app-chat-box [chat]="chat" [current_user_id]="currentUserId"></app-chat-box>
+  </ion-item-group>
+</ion-list>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-textarea autoGrow rows="1" placeholder="Send message" class="ion-text-center" style="color: rgb(131, 128, 128);" [(ngModel)]="message">
+    </ion-textarea>
+    <ion-buttons slot="end">
+      <ion-fab-button *ngIf="!isLoading" size="small"  (click)="sendMessage()"  color="primary">
+        <ion-icon name="send"></ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-button *ngIf="isLoading" size="small" color="primary" >
+        <ion-spinner name="crescent" color="white"></ion-spinner>
+      </ion-fab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

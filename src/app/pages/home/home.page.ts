@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-home',
@@ -8,10 +11,26 @@ import { Observable } from 'rxjs';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  @ViewChild('new_chat') modal:ModalController ;
+ @ViewChild('popover') popover:PopoverController;
+  
+ constructor(private router:Router ) { 
+  this.modal = new ModalController();
+  this.popover = new PopoverController();
+  
+ }
+
   segment='chats';
   open_new_chat=false;
   users=[
+    {
+      id:1,
+      name:'chaymae',
+      photo:'https://i.pravatar.cc/325'
+    }
+  ];
+
+  chatRooms=[
     {
       id:1,
       name:'chaymae',
@@ -40,5 +59,8 @@ export class HomePage implements OnInit {
   }
   startChat(event:any){
 
+  }
+  getChat(item:any){
+    this.router.navigate(['home','chats',item?.id]);
   }
 }
