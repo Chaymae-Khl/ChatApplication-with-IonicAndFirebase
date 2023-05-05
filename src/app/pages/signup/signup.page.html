@@ -1,0 +1,88 @@
+<ion-content [fullscreen]="true">
+
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button mode="md" defaultHref="/welcome" color="white"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  
+
+</ion-content>
+
+<ion-footer>
+  <ion-list lines="full">
+    <ion-list-header class="ion-margin" >
+      <ion-label color="primary">
+        New
+        <p><ion-text color="primary">Account</ion-text></p>
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item-group class="ion-margin-horizontal">
+      <form [formGroup]="form">
+        <div class="ion-margin-vertical">
+          <ion-item>
+            <ion-label position="stacked" color="primary">Username</ion-label>
+            <ion-input formControlName="name" type="text" placeholder="Username" color="primary">
+              <ion-icon name="person" slot="start" color="medium"></ion-icon>
+            </ion-input>
+          </ion-item>
+          <ion-text class="error" color="danger" 
+            *ngIf="!form.get('name').valid && form.get('name').touched">
+            <ion-text *ngIf="form.get('name').hasError('required')">
+              * Please enter your Name
+            </ion-text>            
+          </ion-text>
+        </div>
+        <div class="ion-margin-vertical">
+          <ion-item>
+            <ion-label position="stacked" color="primary">Email</ion-label>
+            <ion-input formControlName="email" type="email" color="primary" placeholder="Email Address">
+              <ion-icon name="mail" slot="start" color="medium"></ion-icon>
+            </ion-input>
+          </ion-item>
+          <ion-text class="error" color="danger" 
+            *ngIf="!form.get('email').valid && form.get('email').touched">
+            <ion-text *ngIf="form.get('email').hasError('required')">
+              * Please enter your Email Address
+            </ion-text>
+            <ion-text 
+              *ngIf="!form.get('email').hasError('required') && form.get('email').hasError('email')">
+              * Please enter proper Email Address
+            </ion-text>
+          </ion-text>
+        </div>
+
+        <div class="ion-margin-vertical">
+          <ion-item>
+            <ion-label position="stacked" color="primary">Password</ion-label>
+            <ion-input formControlName="password" type="password" color="primary" placeholder="Password">
+              <ion-icon name="key" slot="start" color="medium"></ion-icon>
+            </ion-input>
+          </ion-item>
+          <ion-text class="error" color="danger" *ngIf="!form.get('password').valid && form.get('password').touched">
+            <ion-text *ngIf="form.get('password').hasError('required')">
+              * Please enter your Password
+            </ion-text>
+            <ion-text *ngIf="!form.get('password').hasError('required') && form.get('password').hasError('minlength')">
+              * Password must be of atleast 8 characters
+            </ion-text>
+          </ion-text>
+        </div>
+
+        <ion-button 
+          size="large" 
+          expand="block" 
+          shape="round" 
+          color="primary" 
+          (click)="onSubmit()">
+          <ion-text style="color: aliceblue;">Sign up</ion-text>
+        </ion-button>
+      </form>
+    </ion-item-group>
+
+  </ion-list>
+</ion-footer>
