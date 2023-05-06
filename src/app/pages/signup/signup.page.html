@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-
+<ion-spinner class="ion-text-center" name="crescent" *ngIf="isLoading"></ion-spinner>
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -78,7 +78,7 @@
           expand="block" 
           shape="round" 
           color="primary" 
-          (click)="onSubmit()">
+          (click)="register(form)">
           <ion-text style="color: aliceblue;">Sign up</ion-text>
         </ion-button>
       </form>
