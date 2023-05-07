@@ -30,19 +30,21 @@
 </ion-header>
 
 <ion-content color="light">
-  <ion-list *ngIf="segment=='chats' && (chatRooms) as rooms" >
+  <ion-list *ngIf="segment=='chats' && (chatRooms | async) as rooms" >
  <ion-list-header class="ion-padding-botton" color="light">
   RECENT CHATS
  </ion-list-header>
 
 <ion-item *ngFor="let item of rooms" (click)="getChat(item)" [detail]="true" color="light">
+  <ng-container *ngIf="(item?.user | async) as user">
   <ion-avatar slot="start">
-    <img [src]="item?.photo"  />
+    <img [src]="getUser(user)?.photo"  />
   </ion-avatar>
-  <ion-label>{{item?.name}}
-   <p> <ion-text>message</ion-text></p>
+  <ion-label><p>{{getUser(user)?.name}}</p>
+   <!-- <p> <ion-text>message</ion-text></p> -->
   </ion-label>
   <ion-text slot="end" color="medium">10:00 AM</ion-text>
+</ng-container>
 </ion-item>
 
 
@@ -65,7 +67,7 @@
     </ion-buttons>
   </ion-toolbar>
  </ion-header>
- <ion-content color="light" *ngIf="users as user$">
+ <ion-content color="light" *ngIf="(users|async)as user$">
   <ion-list class="ion-margin-top" [style.background]="'transparent'" lines="none">
 <app-user-list *ngFor="let item of user$"
 [item]="item"

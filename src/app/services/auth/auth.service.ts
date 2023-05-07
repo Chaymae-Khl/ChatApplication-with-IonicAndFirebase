@@ -44,10 +44,10 @@ async register(formValue:any){
     const registeredUser=await createUserWithEmailAndPassword(this.fireAuth,formValue.email,formValue.password);
     console.log('registered user',registeredUser);
     const data={
-      eamil:formValue.email,
-      name:formValue.username,
+      email:formValue.email,
+      name:formValue.name,
       uid:registeredUser.user.uid,
-      photo:'https://i.pravatar.cc/'+this.randomIntFromInterval(200,400)
+      photo:'https://i.pravatar.cc/325'+this.randomIntFromInterval(200,400)
     };
     await this.apiService.setDocument(`users/${registeredUser.user.uid}`,data);
     const userData={

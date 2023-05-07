@@ -8,9 +8,13 @@
 </ion-header>
 
 <ion-content >
-<ion-list color="primary" lines="none" *ngIf="(chats) as chat$">
+  <app-empty-screen
+  *ngIf="(chats | async)?.length==0" [model]="model"
+  ></app-empty-screen>
+  
+<ion-list color="primary" lines="none" *ngIf="(chats|async) as chat$">
   <ion-item-group  class="chats-group" *ngFor="let chat of chat$" style="color: rgb(131, 128, 128);">
-    <app-chat-box [chat]="chat" [current_user_id]="currentUserId"></app-chat-box>
+    <app-chat-box [chat]="chat" [current_user_id]="chatService.currentUserId"></app-chat-box>
   </ion-item-group>
 </ion-list>
 
